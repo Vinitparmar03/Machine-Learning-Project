@@ -18,6 +18,8 @@ from xgboost import XGBRegressor
 # Load dataset
 df = pd.read_csv("cardekho_dataset.csv")
 
+df = df.drop_duplicates()
+
 # Feature matrix and target
 X = df.iloc[:, 1:-1]
 y = df.iloc[:, -1]
