@@ -104,10 +104,15 @@ cv_results = grid_search.cv_results_
 mean_scores = cv_results["mean_test_score"]
 std_scores = cv_results["std_test_score"]
 
-print("\n📊 CV Variance Analysis for Each Parameter Combination:")
-for params, mean, std in zip(cv_results["params"], mean_scores, std_scores):
-    print(f"Params: {params}")
-    print(f"  🔹 Mean R²: {mean:.4f}")
-    print(f"  🔸 Std Dev : {std:.4f}")
-    print(f"  📈 Variance: {std**2:.6f}")
-    print("-" * 50)
+# 🔥 Just show the best one
+best_index = grid_search.best_index_
+best_params = cv_results["params"][best_index]
+best_mean = mean_scores[best_index]
+best_std = std_scores[best_index]
+best_var = best_std ** 2
+
+print("\n📊 Best CV Result:")
+print(f"✅ Best Params  : {best_params}")
+print(f"🔹 Mean R²      : {best_mean:.4f}")
+print(f"🔸 Std Dev      : {best_std:.4f}")
+print(f"📈 Variance     : {best_var:.6f}")
