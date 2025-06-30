@@ -1,0 +1,3 @@
+px_width and px_height -> pixel_resolution
+three_g and four_g -> network_generation
+sc_w and sc_h -> screen_size
